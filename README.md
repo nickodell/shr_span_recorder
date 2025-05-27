@@ -1,6 +1,6 @@
 # Stream Aware Django Integration for Sentry
 
-<!-- [![image](https://img.shields.io/pypi/v/shr_span_recorder.svg)](https://pypi.python.org/pypi/shr_span_recorder) -->
+[![image](https://img.shields.io/pypi/v/shr_span_recorder.svg)](https://pypi.python.org/pypi/shr_span_recorder)
 
 Record spans in Sentry even if they occur while the response is being streamed
 
