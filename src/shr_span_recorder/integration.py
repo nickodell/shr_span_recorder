@@ -107,7 +107,7 @@ class SHRAwareDjangoIntegration(DjangoIntegration):
                 use_x_forwarded_for,
                 span_origin=SHRAwareDjangoIntegration.origin,
                 http_methods_to_capture=(
-                    integration.http_methods_to_capture
+                    getattr(integration, 'http_methods_to_capture', DEFAULT_HTTP_METHODS_TO_CAPTURE)
                     if integration
                     else DEFAULT_HTTP_METHODS_TO_CAPTURE
                 ),
