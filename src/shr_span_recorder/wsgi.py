@@ -5,7 +5,6 @@ from functools import partial
 from threading import Timer
 
 import sentry_sdk
-from sentry_sdk._werkzeug import get_host, _get_headers
 from sentry_sdk.api import continue_trace
 from sentry_sdk.consts import OP
 from sentry_sdk.scope import should_send_default_pii, use_isolation_scope, use_scope
@@ -53,6 +52,8 @@ if TYPE_CHECKING:
 
 from shr_span_recorder.consts import DEFAULT_HTTP_METHODS_TO_CAPTURE
 from shr_span_recorder._wsgi_common import _filter_headers
+from shr_span_recorder._werkzeug import get_host, _get_headers
+
 
 
 MAX_TRANSACTION_DURATION_SECONDS = 5 * 60
