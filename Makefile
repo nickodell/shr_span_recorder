@@ -49,7 +49,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 lint/flake8: ## check style with flake8
-	flake8 shr_span_recorder tests
+	flake8 src/shr_span_recorder tests
 
 
 lint: lint/flake8 ## check style
