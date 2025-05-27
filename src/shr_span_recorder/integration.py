@@ -45,7 +45,7 @@ from shr_span_recorder.consts import DEFAULT_HTTP_METHODS_TO_CAPTURE
 from shr_span_recorder.wsgi import SHRAwareSentryWsgiMiddleware
 
 
-class SHRAwareDjangoIntegration(DjangoIntegration):
+class StreamAwareDjangoIntegration(DjangoIntegration):
     # Pretend to be the Django integration by setting identifier='django'
     # This has a few implications.
     #    1) If this integration is listed explictly in sentry_sdk.init(integrations=...), then
@@ -85,7 +85,7 @@ class SHRAwareDjangoIntegration(DjangoIntegration):
 
         # This decorator is a low-overhead way to skip tracing if the Django integration is
         # not loaded.
-        @ensure_integration_enabled(SHRAwareDjangoIntegration, old_app)
+        @ensure_integration_enabled(StreamAwareDjangoIntegration, old_app)
         def sentry_patched_wsgi_handler(self, environ, start_response):
             # type: (Any, Dict[str, str], Callable[..., Any]) -> _ScopedResponse
             bound_old_app = old_app.__get__(self, WSGIHandler)
@@ -94,7 +94,7 @@ class SHRAwareDjangoIntegration(DjangoIntegration):
 
             use_x_forwarded_for = settings.USE_X_FORWARDED_HOST
 
-            integration = sentry_sdk.get_client().get_integration(SHRAwareDjangoIntegration)
+            integration = sentry_sdk.get_client().get_integration(StreamAwareDjangoIntegration)
 
             use_shr_aware_wsgi_middleware = True
             if use_shr_aware_wsgi_middleware:
@@ -105,7 +105,7 @@ class SHRAwareDjangoIntegration(DjangoIntegration):
             middleware = middleware_class(
                 bound_old_app,
                 use_x_forwarded_for,
-                span_origin=SHRAwareDjangoIntegration.origin,
+                span_origin=StreamAwareDjangoIntegration.origin,
                 http_methods_to_capture=(
                     getattr(integration, 'http_methods_to_capture', DEFAULT_HTTP_METHODS_TO_CAPTURE)
                     if integration

@@ -4,5 +4,4 @@ __author__ = """Nick ODell"""
 __email__ = 'nickodell@gmail.com'
 __version__ = '0.1.0'
 
-from . import integration
-StreamAwareDjangoIntegration = integration.SHRAwareDjangoIntegration
+from .integration import StreamAwareDjangoIntegration
