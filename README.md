@@ -1,6 +1,6 @@
 # Stream Aware Django Integration for Sentry
 
-[![image](https://img.shields.io/pypi/v/shr_span_recorder.svg)](https://pypi.python.org/pypi/shr_span_recorder)
+<!-- [![image](https://img.shields.io/pypi/v/shr_span_recorder.svg)](https://pypi.python.org/pypi/shr_span_recorder) -->
 
 Record spans in Sentry even if they occur while the response is being streamed
 
@@ -12,7 +12,7 @@ Record spans in Sentry even if they occur while the response is being streamed
     pip install git+https://github.com/nickodell/shr_span_recorder.git
     ```
 
-2.  Add the StreamAwareDjangoIntegration to your integrations.
+2.  Add `StreamAwareDjangoIntegration()` to your integrations.
 
     Example:
 
@@ -65,7 +65,7 @@ Record spans in Sentry even if they occur while the response is being streamed
 
     You should use one or the other. If you use both, Sentry will pick one of them to enable, and the other will be ignored.
 
-4.  Remove Django from disabled_integrations, if you have explicitly disabled it.
+4.  Remove Django from `disabled_integrations`, if you have explicitly disabled it.
 
     If `DjangoIntegration()` is disabled, this will also disable `StreamAwareDjangoIntegration()`.
 
