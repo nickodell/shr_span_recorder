@@ -48,11 +48,8 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
-lint/flake8: ## check style with flake8
-	flake8 src/shr_span_recorder tests
-
-
-lint: lint/flake8 ## check style
+lint: ## check style
+	ruff check src
 
 test: ## run tests quickly with the default Python
 	pytest
@@ -80,10 +77,9 @@ servedocs: docs ## compile the docs watching for changes
 release: dist ## package and upload a release
 	twine upload dist/*
 
+build: dist
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
-	ls -l dist
+	python -m build --sdist --wheel
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
