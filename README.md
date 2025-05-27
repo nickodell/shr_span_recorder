@@ -9,7 +9,7 @@ Record spans in Sentry even if they occur while the response is being streamed
 1.  Install this with the following command
 
     ```
-    pip install git+https://github.com/nickodell/shr_span_recorder.git
+    pip install shr_span_recorder
     ```
 
 2.  Add `StreamAwareDjangoIntegration()` to your integrations.
