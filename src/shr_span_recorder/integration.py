@@ -42,7 +42,7 @@ if TYPE_CHECKING:
 
 from sentry_sdk.integrations.django import DjangoIntegration
 from shr_span_recorder.consts import DEFAULT_HTTP_METHODS_TO_CAPTURE
-from shr_span_recorder.wsgi import SHRAwareSentryWsgiMiddleware
+from shr_span_recorder.wsgi import StreamAwareSentryWsgiMiddleware
 
 
 class StreamAwareDjangoIntegration(DjangoIntegration):
@@ -98,7 +98,7 @@ class StreamAwareDjangoIntegration(DjangoIntegration):
 
             use_shr_aware_wsgi_middleware = True
             if use_shr_aware_wsgi_middleware:
-                middleware_class = SHRAwareSentryWsgiMiddleware
+                middleware_class = StreamAwareSentryWsgiMiddleware
             else:
                 middleware_class = SentryWsgiMiddleware
 

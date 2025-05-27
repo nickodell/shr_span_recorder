@@ -82,7 +82,7 @@ def get_request_url(environ, use_x_forwarded_for=False):
     )
 
 
-class SHRAwareSentryWsgiMiddleware:
+class StreamAwareSentryWsgiMiddleware:
     __slots__ = (
         "app",
         "use_x_forwarded_for",
