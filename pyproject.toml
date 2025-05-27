@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "shr_span_recorder"
 version = "0.1.0"
 description = "Record spans in Sentry even if they occur while the response is being streamed"
-readme = "README.rst"
+readme = "README.md"
 authors = [
   {name = "Nick ODell", email = "nickodell@gmail.com"}
 ]
@@ -16,7 +16,7 @@ maintainers = [
 classifiers = [
 
 ]
-license = {text = "MIT license"}
+license = "MIT"
 dependencies = [
   "sentry-sdk>=2.12.0",
 ]
