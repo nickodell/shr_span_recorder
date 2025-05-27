@@ -5,7 +5,7 @@
 import pytest
 
 
-from shr_span_recorder import shr_span_recorder
+from shr_span_recorder import StreamAwareDjangoIntegration
 
 
 @pytest.fixture

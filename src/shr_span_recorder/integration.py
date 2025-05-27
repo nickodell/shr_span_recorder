@@ -9,14 +9,7 @@ from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
 
 try:
     from django import VERSION as DJANGO_VERSION
-    from django.conf import settings as django_settings
     from django.core import signals
-    from django.conf import settings
-
-    try:
-        from django.urls import resolve
-    except ImportError:
-        from django.core.urlresolvers import resolve
 
     # Only available in Django 3.0+
     try:
@@ -36,8 +29,6 @@ else:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-
-
     pass
 
 from sentry_sdk.integrations.django import DjangoIntegration

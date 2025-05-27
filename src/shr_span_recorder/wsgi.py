@@ -55,7 +55,6 @@ from shr_span_recorder._wsgi_common import _filter_headers
 from shr_span_recorder._werkzeug import get_host, _get_headers
 
 
-
 MAX_TRANSACTION_DURATION_SECONDS = 5 * 60
 
 
@@ -371,6 +370,7 @@ def _finish_long_running_transaction(current_scope, isolation_scope):
     except AttributeError:
         # transaction is not there anymore
         pass
+
 
 def finish_running_transaction(scope=None, exc_info=None, timer=None):
     # type: (Optional[sentry_sdk.Scope], Optional[ExcInfo], Optional[Timer]) -> None
