@@ -9,18 +9,17 @@ from sentry_sdk._werkzeug import get_host, _get_headers
 from sentry_sdk.api import continue_trace
 from sentry_sdk.consts import OP
 from sentry_sdk.scope import should_send_default_pii, use_isolation_scope, use_scope
-# from sentry_sdk.integrations._wsgi_common import (
-#     DEFAULT_HTTP_METHODS_TO_CAPTURE,
-#     _filter_headers,
-# )
-from sentry_sdk.sessions import track_session
-# from sentry_sdk.tracing import Transaction, TRANSACTION_SOURCE_ROUTE
+try:
+    from sentry_sdk.sessions import track_session
+except ImportError:
+    # track_session was added in Sentry 2.13
+    from sentry_sdk.sessions import auto_session_tracking_scope as track_session
 try:
     from sentry_sdk.tracing import TRANSACTION_SOURCE_ROUTE
 except ImportError:
     from sentry_sdk.tracing import TransactionSource
     TRANSACTION_SOURCE_ROUTE = str(TransactionSource.ROUTE)
-# from sentry_sdk.tracing_utils import finish_running_transaction
+
 from sentry_sdk.utils import (
     ContextVar,
     capture_internal_exceptions,
